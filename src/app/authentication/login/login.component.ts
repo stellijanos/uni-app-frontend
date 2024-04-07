@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   
   loginForm: FormGroup = new FormGroup({});
 
+  isInvalid: boolean = true;
+
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
@@ -22,17 +24,23 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email, Validators.maxLength(64)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
       password:['',Validators.required]
     });
   }
 
 
+
   onSubmit() {
     if(this.loginForm.valid) {
-      let loginUser: LoginUser = this.loginForm.value;
+      let user: LoginUser = this.loginForm.value;
 
-      this.authenticationService.loginUser
+      this.authenticationService.loginUser(user).subscribe( result => {
+        if (result === "success") {
+          // this.router
+          //TODO
+        }
+      });
     }
   }
 
