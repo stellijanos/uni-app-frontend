@@ -1,0 +1,12 @@
+
+#auth-options {
+    max-width:500px; 
+    margin:auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding:30px 25px 0;
+    display:flex;
+    justify-content: center;
+    gap:1rem;
+}
+

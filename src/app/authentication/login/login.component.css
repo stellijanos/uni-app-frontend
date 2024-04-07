@@ -1,0 +1,12 @@
+
+#login-div {
+    width:500px;
+    margin:auto;
+}
+
+#login-form {
+    padding:30px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius: 10px;
+    width:100%;
+}
