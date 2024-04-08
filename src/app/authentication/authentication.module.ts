@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeModule } from '../home/home.module';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [

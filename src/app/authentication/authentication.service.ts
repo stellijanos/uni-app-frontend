@@ -13,6 +13,9 @@ export class AuthenticationService {
 
   private apiLoginUrl = environment.apiUrl + "/login";
   private apiRegisterUrl = environment.apiUrl + "/register";
+  private apiIsLoggedInUrl = environment.apiUrl + "/isLoggedIn";
+
+  userRole = 'admin';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -29,8 +32,12 @@ export class AuthenticationService {
   }
 
   registerUser(user: RegisterUser): Observable<string> {
-    
     return this.http.post<string>(this.apiRegisterUrl, user, this.httpOptions);
   }
-}
 
+  isLoggedIn(token: string): boolean {
+    return true;
+    // return this.http.post<string>(this.apiIsLoggedInUrl, {'token': token}, this.httpOptions);
+  }
+
+}

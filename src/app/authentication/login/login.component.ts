@@ -49,18 +49,17 @@ export class LoginComponent implements OnInit {
           this.errorMessage = login_response.response;
         } else {
           this.successMessage = "User successfully logged in!";
-
           localStorage.setItem('token', login_response.login_token);
+
+          
+
+          this.router.navigate(['/home']);
         }
       
-          // if (response === "success") {
-          //   this.router.navigate(['/login']);
-          // } else {
-          //   this.errorMessage = 'Registration failed!'
-          // }
       });
     }
   }
+
 
 
   show_password() {
@@ -77,3 +76,4 @@ export class LoginComponent implements OnInit {
     }
   }
 }
+
