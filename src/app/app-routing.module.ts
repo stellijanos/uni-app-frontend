@@ -10,6 +10,8 @@ import { StudentGuard } from './guards/student-guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminComponent } from './admin/admin.component';
 import { StudentListComponent } from './admin/student-list/student-list.component';
+import { GradeComponent } from './admin/grade/grade.component';
+
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
@@ -19,9 +21,10 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [AdminGuard], canActivateChild: [AdminGuard]},
   {path: 'student', component:StudentComponent, canActivate:[StudentGuard], canActivateChild: [StudentGuard]},
   {path: 'admin/students', component:StudentListComponent},
+  {path: 'admin/grades', component: GradeComponent},
   {path: 'access-denied', component: UnauthorizedComponent},
   {path: '**', component: PageNotFoundComponent}
-
+ 
 ];
 
 @NgModule({
@@ -29,5 +32,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StudentListComponent } from './student-list/student-list.component';
+import { GradeComponent } from './grade/grade.component';
 
 
 
@@ -10,7 +11,8 @@ import { StudentListComponent } from './student-list/student-list.component';
   declarations: [
     AdminComponent,
     NavbarComponent,
-    StudentListComponent
+    StudentListComponent,
+    GradeComponent
   ],
   imports: [
     CommonModule

@@ -1,8 +1,15 @@
 <app-navbar></app-navbar>
 
-<div class="container d-flex flex-row justify-content-center" style="margin-top:50px">
 
-<table class="table table-striped border">
+
+
+<div class="container d-flex flex-row justify-content-center align-items-center">
+
+  <div class="container text-center" style="margin:100px 0" *ngIf="students.length === 0">
+    <p style="font-size:50px;">No students were found.</p>
+  </div>
+
+<table class="table table-striped border" *ngIf="students.length>0">
     <thead>
       <tr>
         <th scope="col">Nr.</th>
