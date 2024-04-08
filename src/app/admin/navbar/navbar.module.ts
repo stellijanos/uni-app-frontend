@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './admin.component';
+import { NavbarComponent } from './navbar.component';
 
 
 
 @NgModule({
   declarations: [
-    AdminComponent
+    NavbarComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class AdminModule { }
+export class NavbarModule { }
