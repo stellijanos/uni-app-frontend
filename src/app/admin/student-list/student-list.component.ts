@@ -52,8 +52,8 @@ export class StudentListComponent implements OnInit {
 
   sortByBirthDate() {
     this.students.sort((a, b) => {
-      const date_a = a.birthDate.getTime();
-      const date_b = b.birthDate.getTime();
+      const date_a = new Date(a.birthDate).getTime();
+      const date_b = new Date(b.birthDate).getTime();
 
       return this.birthDateAsc ? date_a - date_b : date_b - date_a;
     });
