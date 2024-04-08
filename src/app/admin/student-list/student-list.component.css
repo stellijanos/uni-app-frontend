@@ -1,0 +1,10 @@
+
+th:not(:first-child) {
+    cursor:pointer;
+    user-select:none;
+}
+th:active:not(:first-child) {
+    transform:scale(1.02);
+    background-color: lightgray;
+}
+

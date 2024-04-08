@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<div class="container d-flex flex-row justify-content-center" style="margin-top:50px">
+
+<table class="table table-striped border">
+    <thead>
+      <tr>
+        <th scope="col">Nr.</th>
+        <th scope="col" (click)="sortByFirstname()">Firstname</th>
+        <th scope="col" (click)="sortByLastname()">Lastname</th>
+        <th scope="col" (click)="sortByEmail()">Email</th>
+        <th scope="col" (click)="sortByBirthDate()">Birthdate</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let student of students; index as i">
+            <th scope="row">{{i}}</th>
+            <td>{{student.firstname}}</td>
+            <td>{{student.lastname}}</td>
+            <td><a sttyle="width:100px;" href="mailto:{{student.email}}">{{student.email}}</a></td>
+            <td>{{student.birthDate}}</td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>

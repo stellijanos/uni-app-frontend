@@ -8,6 +8,7 @@ import { HomeModule } from './home/home.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AdminModule } from './admin/admin.module';
 
 
 
@@ -21,7 +22,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppRoutingModule,
     HomeModule,
     AuthenticationModule,
-    HttpClientModule
+    HttpClientModule,
+    AdminModule
   ],
   providers: [
     provideClientHydration(),
