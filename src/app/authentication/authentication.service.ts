@@ -25,7 +25,7 @@ export class AuthenticationService {
 
 
   loginUser(user: LoginUser):Observable<string> {
-    return this.http.post<string>(this.apiLoginUrl, user);
+    return this.http.post<string>(this.apiLoginUrl, user, this.httpOptions);
   }
 
   registerUser(user: RegisterUser): Observable<string> {
@@ -33,3 +33,4 @@ export class AuthenticationService {
     return this.http.post<string>(this.apiRegisterUrl, user, this.httpOptions);
   }
 }
+

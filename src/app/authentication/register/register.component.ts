@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { RegisterUser } from '../../models/register-user';
-import { RegisterResponse } from '../../models/register-response';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +13,7 @@ export class RegisterComponent implements OnInit{
   registerForm: FormGroup = new FormGroup({});
 
   errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,19 +39,17 @@ export class RegisterComponent implements OnInit{
 
       this.authenticationService.registerUser(user).subscribe( (response) => {
 
-        console.log(typeof(JSON.stringify(response)));
+        this.errorMessage = '';
+        console.log(JSON.stringify(response));
 
         let json_response = JSON.stringify(response);
-
         let register_response = JSON.parse(json_response);
-        
-        if (register_response.response === 'success') {
-          this.router.navigate(['/login']);
+
+        if (register_response.response !== "success") {
+          this.errorMessage = register_response.response;
         } else {
-          this.errorMessage = 'Registration failed!'
+          this.successMessage = "User successfully registered!";
         }
-      
-        
       });
     }
   }

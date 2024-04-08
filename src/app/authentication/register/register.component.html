@@ -5,6 +5,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="register-form" class="bg-light text-center">
         <p>(All fields marked with * are mandatory)</p>
         <p *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</p>
+        <p *ngIf="successMessage" class="alert alert-success">{{successMessage}}</p>
         <div class="form-floating mb-3  w-100">
             <input 
                 type="text"

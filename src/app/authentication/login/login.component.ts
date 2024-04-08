@@ -13,9 +13,9 @@ export class LoginComponent implements OnInit {
   
   loginForm: FormGroup = new FormGroup({});
 
-  isInvalid: boolean = true;
 
-  errorMessage : string = '';
+  errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,11 +38,26 @@ export class LoginComponent implements OnInit {
       let user: LoginUser = this.loginForm.value;
 
       this.authenticationService.loginUser(user).subscribe( response => {
-        if (response === "success") {
-          this.router.navigate(['/login']);
+
+        this.errorMessage = '';
+        console.log(JSON.stringify(response));
+
+        let json_response = JSON.stringify(response);
+        let login_response = JSON.parse(json_response);
+
+        if (login_response.response !== "success") {
+          this.errorMessage = login_response.response;
         } else {
-          this.errorMessage = 'Registration failed!'
+          this.successMessage = "User successfully logged in!";
+
+          localStorage.setItem('token', login_response.login_token);
         }
+      
+          // if (response === "success") {
+          //   this.router.navigate(['/login']);
+          // } else {
+          //   this.errorMessage = 'Registration failed!'
+          // }
       });
     }
   }
