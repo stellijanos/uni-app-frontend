@@ -2,32 +2,111 @@
 
 <app-home></app-home>
 <div id="register-div" class="d-flex flex-column justify-content-center align-items-center" >
-    <div id="register-form" class="bg-light text-center">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="register-form" class="bg-light text-center">
         <p>(All fields marked with * are mandatory)</p>
+        <p *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</p>
         <div class="form-floating mb-3  w-100">
-            <input type="name" name="firstname" id="firstname" class="form-control" placeholder="Firstname">
+            <input 
+                type="text"
+                id="firstname" 
+                class="form-control" 
+                placeholder="Firstname" 
+                formControlName="firstname"
+                pattern="^[A-Z][a-zA-Z'-]+$"
+                [ngClass]="{
+                    'border-danger': registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched,
+                    'border-success': registerForm.get('firstname')?.valid && registerForm.get('firstname')?.touched
+                    }"
+            >
             <label for="firstname">Firstname*</label>
+            <p class="text-danger text-start" *ngIf="registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched">
+                Firstname is required!
+            </p>
         </div>
         <div class="form-floating mb-3  w-100">
-            <input type="name" name="lastname" id="lastname" class="form-control" placeholder="Lastname">
+            <input type="text" id="lastname" class="form-control" placeholder="Lastname" formControlName="lastname"
+            [ngClass]="{
+                'border-danger': registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched,
+                'border-success': registerForm.get('lastname')?.valid && registerForm.get('lastname')?.touched
+                }"
+            >
             <label for="lastname">Lastname*</label>
+            <p class="text-danger text-start" *ngIf="registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched">
+                Lastname is required!
+            </p>
         </div>
         <div class="form-floating mb-3  w-100">
-            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-            <label for="email">Email*</label>
+            <input 
+                type="email" 
+                id="email" 
+                class="form-control"  
+                placeholder="Email" 
+                autocomplete="username" 
+                formControlName="email"
+                [ngClass]="{
+                    'border-danger': registerForm.get('email')?.invalid && registerForm.get('email')?.touched,
+                    'border-success': registerForm.get('email')?.valid && registerForm.get('email')?.touched
+                    }"
+                >
+            <label for="email">Email</label>
+            <p class="text-danger text-start" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                Email is required!
+            </p>
         </div>
         <div class="form-floating mb-3  w-100">
-            <input type="date" name="birth-date" id="birth-date" class="form-control" placeholder="Birthdate">
+            <input type="date" id="birth-date" class="form-control" placeholder="Birthdate" formControlName="birthDate"
+            [ngClass]="{
+                'border-danger': registerForm.get('birthDate')?.invalid && registerForm.get('birthDate')?.touched,
+                'border-success': registerForm.get('birthDate')?.valid && registerForm.get('birthDate')?.touched
+                }"
+            >
             <label for="birth-date">Birthdate*</label>
+            <p class="text-danger text-start" *ngIf="registerForm.get('birthDate')?.invalid && registerForm.get('birthDate')?.touched">
+                Birthdate is required!
+            </p>
         </div>
-        <div class="form-floating mb-3  w-100">
-            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-            <label for="password">Password*</label>
+        <div class="mb-3">
+            <div class="input-group w-100">
+                <div class="form-floating">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-control" 
+                        placeholder="Password" 
+                        autocomplete="current-password" 
+                        aria-label="Password" 
+                        aria-describedby="show-password"
+                        formControlName="password" 
+                        [ngClass]="{
+                            'border-danger': registerForm.get('password')?.invalid && registerForm.get('password')?.touched,
+                            'border-success': registerForm.get('password')?.valid && registerForm.get('password')?.touched
+                            }"
+                        >
+                    <label for="password">Password</label>
+                </div>
+                <span class="input-group-text" id="show-password" (click)="show_password()">
+                    <i class="bi bi-eye-slash-fill"></i>
+                </span>
+            </div>
+            <p class="text-danger text-start" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                Password is required!
+            </p>
         </div>
-        <div class="form-floating mb-5  w-100">
-            <input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirm password">
+        <div class="form-floating mb-5 w-100">  
+            <input type="password" id="confirm-password" class="form-control" placeholder="Confirm password" autocomplete="new-password" formControlName="confirmPassword"
+            [ngClass]="{
+                'border-danger': registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched,
+                'border-success': registerForm.get('confirmPassword')?.valid && registerForm.get('confirmPassword')?.touched
+                }"
+            >
             <label for="confirm-password">Confirm password*</label>
+            <p class="text-danger text-start" 
+                *ngIf=" (registerForm.get('confirmPassword')?.invalid  && registerForm.get('confirmPassword')?.touched) || 
+                (registerForm.get('password')?.value !== registerForm.get('confirmPassword')?.value && registerForm.get('password')?.touched)"
+            >
+                Passwords don't match!
+            </p>
         </div>
-        <button class="btn btn-success w-100">Register</button>
-    </div>
+        <button class="btn btn-success w-100" [disabled]="registerForm.invalid">Register</button>
+    </form>
 </div>

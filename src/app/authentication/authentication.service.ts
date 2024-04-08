@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginUser } from '../models/login-user';
 import { RegisterUser } from '../models/register-user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -14,6 +14,12 @@ export class AuthenticationService {
   private apiLoginUrl = environment.apiUrl + "/login";
   private apiRegisterUrl = environment.apiUrl + "/register";
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': environment.token
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +29,7 @@ export class AuthenticationService {
   }
 
   registerUser(user: RegisterUser): Observable<string> {
-    return this.http.post<string>(this.apiRegisterUrl, user);
+    
+    return this.http.post<string>(this.apiRegisterUrl, user, this.httpOptions);
   }
 }

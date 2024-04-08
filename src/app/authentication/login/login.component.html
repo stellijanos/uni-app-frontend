@@ -1,23 +1,52 @@
 
 <app-home></app-home>
 <div id="login-div" class="d-flex flex-column justify-content-center align-items-center" >
-    
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="login-form" class="bg-light text-center">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"  id="login-form" class="bg-light text-center">
         <div class="form-floating mb-3  w-100">
-            <input type="email" id="email" class="form-control" [ngClass]="" placeholder="Email" autocomplete="username" formControlName="email">
+            <input 
+                type="email" 
+                id="email" 
+                class="form-control"  
+                placeholder="Email" 
+                autocomplete="username" 
+                formControlName="email"
+                [ngClass]="{
+                    'border-danger': loginForm.get('email')?.invalid && loginForm.get('email')?.touched,
+                    'border-success': loginForm.get('email')?.valid && loginForm.get('email')?.touched
+                    }"
+                >
             <label for="email">Email</label>
             <p class="text-danger text-start" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
                 Email is required!
             </p>
         </div>
-        <div class="form-floating mb-5  w-100">
-            <input type="password" id="password" class="form-control" placeholder="Password" autocomplete="current-password" formControlName="password" [ngClass]="{'border-danger': isInvalid }">
-            <label for="password">Password</label>
+        <div class="mb-5">
+            <div class="input-group w-100">
+                <div class="form-floating">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-control" 
+                        placeholder="Password" 
+                        autocomplete="current-password" 
+                        aria-label="Password" 
+                        aria-describedby="show-password"
+                        formControlName="password" 
+                        [ngClass]="{
+                            'border-danger': loginForm.get('password')?.invalid && loginForm.get('password')?.touched,
+                            'border-success': loginForm.get('password')?.valid && loginForm.get('password')?.touched
+                            }"
+                        >
+                    <label for="password">Password</label>
+                </div>
+                <span class="input-group-text" id="show-password" (click)="show_password()">
+                    <i class="bi bi-eye-slash-fill"></i>
+                </span>
+            </div>
             <p class="text-danger text-start" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-                Email is required!
+                Password is required!
             </p>
         </div>
         <button class="btn btn-success w-100" type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
 </div>
-

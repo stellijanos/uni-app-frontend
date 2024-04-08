@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   isInvalid: boolean = true;
 
+  errorMessage : string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
@@ -35,13 +37,28 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid) {
       let user: LoginUser = this.loginForm.value;
 
-      this.authenticationService.loginUser(user).subscribe( result => {
-        if (result === "success") {
-          // this.router
-          //TODO
+      this.authenticationService.loginUser(user).subscribe( response => {
+        if (response === "success") {
+          this.router.navigate(['/login']);
+        } else {
+          this.errorMessage = 'Registration failed!'
         }
       });
     }
   }
 
+
+  show_password() {
+    let password =  document.getElementById('password') as HTMLInputElement;
+    let show_password = document.getElementById('show-password') as HTMLSpanElement;
+    if (password && show_password) {
+      if (password.type === "text") {
+        password.type = "password";
+        show_password.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+      } else {
+        password.type = "text";
+        show_password.innerHTML = '<i class="bi bi-eye-fill"></i>';
+      }
+    }
+  }
 }
