@@ -23,9 +23,24 @@ export class StudentGuard{
         return false;
     }
   }
+
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.authService.isLoggedIn()) {
+
+      if ( this.authService.userRole === "student") {
+        return true;
+        } else {
+        this.router.navigate(['/access-denied']);
+        return false;
+        }
+      } else {
+        this.router.navigate(['/login']);
+        return false;
+    }
+  }
 }
 
-export const canActivate: CanActivateFn = (route: ActivatedRouteSnapshot,state: RouterStateSnapshot) => {
+export const canActivateChild: CanActivateChildFn = (route: ActivatedRouteSnapshot,state: RouterStateSnapshot) => {
   if (inject(AuthenticationService).userRole === "student") {
     return true;
   } else {
