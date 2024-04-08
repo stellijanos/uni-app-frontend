@@ -35,7 +35,8 @@ export class AuthenticationService {
     return this.http.post<string>(this.apiRegisterUrl, user, this.httpOptions);
   }
 
-  isLoggedIn(token: string): boolean {
+  isLoggedIn(): boolean {
+    let token:string = localStorage.getItem('token') ?? '';
     return true;
     // return this.http.post<string>(this.apiIsLoggedInUrl, {'token': token}, this.httpOptions);
   }

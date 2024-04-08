@@ -11,10 +11,7 @@ export class AuthGuard {
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    
-    let token:string = localStorage.getItem('token') ?? '';
-
-    if (this.authService.isLoggedIn(token)) {
+    if (this.authService.isLoggedIn()) {
       return true;
     } else {
       this.router.navigate(['/login']);
@@ -24,7 +21,7 @@ export class AuthGuard {
 }
 
 export const canActivateGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-  if (inject(AuthenticationService).isLoggedIn('ok')) {
+  if (inject(AuthenticationService).isLoggedIn()) {
     return true;
   } else {
     inject(Router).navigate(['/login']);

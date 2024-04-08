@@ -5,7 +5,6 @@ import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { UnauthorizedComponent } from './authentication/unauthorized/unauthorized.component';
 import { AdminComponent } from './admin/admin.component';
-import { AuthGuard } from './guards/auth-guard';
 import { AdminGuard } from './guards/admin-guard';
 import { StudentComponent } from './student/student.component';
 import { StudentGuard } from './guards/student-guard';
@@ -15,8 +14,8 @@ const routes: Routes = [
   {path: "login", component:LoginComponent},
   {path: "register", component:RegisterComponent},
   {path: "unauthorized", component:UnauthorizedComponent},
-  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], canActivateChild: [AdminGuard]},
-  {path: 'student', component:StudentComponent, canActivate: [AuthGuard], canActivateChild: [StudentGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+  {path: 'student', component:StudentComponent, canActivate:[StudentGuard]},
   {path: 'access-denied', component: UnauthorizedComponent}
 
 ];
