@@ -18,10 +18,13 @@ const routes: Routes = [
   {path: "login", component:LoginComponent},
   {path: "register", component:RegisterComponent},
   {path: "unauthorized", component:UnauthorizedComponent},
-  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard], canActivateChild: [AdminGuard]},
-  {path: 'student', component:StudentComponent, canActivate:[StudentGuard], canActivateChild: [StudentGuard]},
-  {path: 'admin/students', component:StudentListComponent},
-  {path: 'admin/grades', component: GradeComponent},
+  {path: 'admin', component: AdminComponent, 
+  canActivate: [AdminGuard], 
+  children: [
+    {path: 'students', component:StudentListComponent},
+    {path: 'grades', component: GradeComponent},
+  ]},
+  {path: 'student', component:StudentComponent, canActivate:[StudentGuard]},
   {path: 'access-denied', component: UnauthorizedComponent},
   {path: '**', component: PageNotFoundComponent}
  

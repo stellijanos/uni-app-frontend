@@ -9,6 +9,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminModule } from './admin/admin.module';
+import { AuthGuard } from './guards/auth-guard';
+import { AdminGuard } from './guards/admin-guard';
+import { StudentGuard } from './guards/student-guard';
 
 
 
@@ -27,7 +30,8 @@ import { AdminModule } from './admin/admin.module';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    AuthGuard, AdminGuard, StudentGuard
   ],
   bootstrap: [AppComponent]
 }) export class AppModule { }

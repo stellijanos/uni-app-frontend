@@ -38,8 +38,8 @@ export class AuthenticationService {
     return this.http.post<string>(this.apiRegisterUrl, user, this.httpOptions);
   }
 
-  private isLoggedIn(): Observable<string> {
+  getLoginInfo(): Observable<string> {
     let token:string = localStorage.getItem('token') ?? '';
-    return this.http.post<string>(`${this.apiIsLoggedInUrl}/${token}`, this.httpOptions);
+    return this.http.post<string>(`${this.apiIsLoggedInUrl}/${token}`, null, this.httpOptions);
   }
 }
