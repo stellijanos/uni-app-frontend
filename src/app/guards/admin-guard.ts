@@ -9,9 +9,9 @@ export class AdminGuard{
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {
-	if (this.authService.isLoggedIn()) {
+	if (this.authService.loggedIn === "YES") {
 
-		if ( this.authService.userRole ==="admin") {
+		if ( this.authService.userRole ==="ADMIN") {
 			return true;
 		  } else {
 			this.router.navigate(['/access-denied']);
@@ -24,9 +24,9 @@ export class AdminGuard{
   }
 
   canActivateChild(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {
-	if (this.authService.isLoggedIn()) {
+	if (this.authService.loggedIn === "YES") {
 
-		if ( this.authService.userRole ==="admin") {
+		if ( this.authService.userRole ==="ADMIN") {
 			return true;
 		  } else {
 			this.router.navigate(['/access-denied']);
@@ -40,9 +40,9 @@ export class AdminGuard{
 }
 
 export const canActivate: CanActivateFn = (route: ActivatedRouteSnapshot,state: RouterStateSnapshot) => {
-	if (inject(AuthenticationService).isLoggedIn()) {
+	if (inject(AuthenticationService).loggedIn === "YES") {
 
-		if ( inject(AuthenticationService).userRole ==="admin") {
+		if ( inject(AuthenticationService).userRole ==="ADMIN") {
 			return true;
 		  } else {
 			inject(Router).navigate(['/access-denied']);
@@ -53,11 +53,13 @@ export const canActivate: CanActivateFn = (route: ActivatedRouteSnapshot,state: 
 		return false;
 	}
 }
+
+
 
 export const canActivateChild: CanActivateChildFn = (route: ActivatedRouteSnapshot,state: RouterStateSnapshot) => {
-	if (inject(AuthenticationService).isLoggedIn()) {
+	if (inject(AuthenticationService).loggedIn === "YES" ) {
 
-		if ( inject(AuthenticationService).userRole ==="admin") {
+		if ( inject(AuthenticationService).userRole === "ADMIN") {
 			return true;
 		  } else {
 			inject(Router).navigate(['/access-denied']);
@@ -68,3 +70,4 @@ export const canActivateChild: CanActivateChildFn = (route: ActivatedRouteSnapsh
 		return false;
 	}
 }
+

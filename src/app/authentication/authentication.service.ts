@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, inject } from '@angular/core';
 import { LoginUser } from '../models/login-user';
 import { RegisterUser } from '../models/register-user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,9 +13,10 @@ export class AuthenticationService {
 
   private apiLoginUrl = environment.apiUrl + "/login";
   private apiRegisterUrl = environment.apiUrl + "/register";
-  private apiIsLoggedInUrl = environment.apiUrl + "/isLoggedIn";
+  private apiIsLoggedInUrl = environment.apiUrl + "/logged_in";
 
-  userRole = 'admin';
+  userRole: string = localStorage.getItem('role') ?? 'NO';
+  loggedIn: string = localStorage.getItem('logged_in') ?? 'NO';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -24,7 +25,9 @@ export class AuthenticationService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    
+  }
 
 
   loginUser(user: LoginUser):Observable<string> {
@@ -35,10 +38,8 @@ export class AuthenticationService {
     return this.http.post<string>(this.apiRegisterUrl, user, this.httpOptions);
   }
 
-  isLoggedIn(): boolean {
-    // let token:string = localStorage.getItem('token') ?? '';
-    return true;
-    // return this.http.post<string>(this.apiIsLoggedInUrl, {'token': token}, this.httpOptions);
+  private isLoggedIn(): Observable<string> {
+    let token:string = localStorage.getItem('token') ?? '';
+    return this.http.post<string>(`${this.apiIsLoggedInUrl}/${token}`, this.httpOptions);
   }
-
 }

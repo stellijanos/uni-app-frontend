@@ -11,7 +11,7 @@ export class AuthGuard {
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authService.isLoggedIn()) {
+    if (this.authService.loggedIn === "YES") {
       return true;
     } else {
       this.router.navigate(['/login']);
@@ -21,7 +21,7 @@ export class AuthGuard {
 }
 
 export const canActivateGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-  if (inject(AuthenticationService).isLoggedIn()) {
+  if (inject(AuthenticationService).loggedIn === "YES") {
     return true;
   } else {
     inject(Router).navigate(['/login']);

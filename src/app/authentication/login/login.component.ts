@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { LoginUser } from '../../models/login-user';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -50,10 +51,15 @@ export class LoginComponent implements OnInit {
         } else {
           this.successMessage = "User successfully logged in!";
           localStorage.setItem('token', login_response.login_token);
-
-          
-
-          this.router.navigate(['/home']);
+          let role = login_response.login_token !== environment.login_token ? 'STUDENT' : 'ADMIN';
+          localStorage.setItem('role', role);
+          localStorage.setItem('logged_in', "YES");
+        
+          if (role !== 'ADMIN') {
+            this.router.navigate(['/student']);
+          } else  {
+            this.router.navigate(['/admin']);
+          }
         }
       
       });
