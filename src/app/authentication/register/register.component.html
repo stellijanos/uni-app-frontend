@@ -13,7 +13,6 @@
                 class="form-control" 
                 placeholder="Firstname" 
                 formControlName="firstname"
-                pattern="^[A-Z][a-zA-Z'-]+$"
                 [ngClass]="{
                     'border-danger': registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched,
                     'border-success': registerForm.get('firstname')?.valid && registerForm.get('firstname')?.touched

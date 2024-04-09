@@ -15,8 +15,6 @@ export class AuthenticationService {
   private apiRegisterUrl = environment.apiUrl + "/register";
   private apiIsLoggedInUrl = environment.apiUrl + "/logged_in";
 
-  userRole: string = localStorage.getItem('role') ?? 'NO';
-  loggedIn: string = localStorage.getItem('logged_in') ?? 'NO';
 
   private httpOptions = {
     headers: new HttpHeaders({

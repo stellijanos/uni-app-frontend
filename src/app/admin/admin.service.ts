@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { EditUser } from '../models/edit-user';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,5 @@ export class AdminService {
   deleteStudent(id: number): Observable<void> {
     return this.http.delete<void>( `${this.apiStudentUrl}/${id}` , this.httpOptions);
   }
-
 }
+
