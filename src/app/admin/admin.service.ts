@@ -9,6 +9,7 @@ import { User } from '../models/user';
 })
 export class AdminService {
   private apiStudentsUrl = environment.apiUrl + "/students";
+  private apiStudentUrl = environment.apiUrl + "/student";
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -21,6 +22,10 @@ export class AdminService {
 
   getAllStudents(): Observable<User[]> {
     return this.http.get<User[]>(this.apiStudentsUrl, this.httpOptions);
+  }
+
+  deleteStudent(id: number): Observable<void> {
+    return this.http.delete<void>( `${this.apiStudentUrl}/${id}` , this.httpOptions);
   }
 
 }

@@ -3,32 +3,57 @@
 
 
 
-<div class="container d-flex flex-row justify-content-center align-items-center">
+<div class="container mb-5" >
+	<div class="container text-center mb-3 mt-3" *ngIf="students.length > 0">
+		<input type="text" class="form-control w-100" placeholder="Search for student(s)" (keyup)="searchStudents($event)">
+	</div>
 
-  <div class="container text-center" style="margin:100px 0" *ngIf="students.length === 0">
-    <p style="font-size:50px;">No students were found.</p>
+	<div class="container text-center" style="margin:100px 0" *ngIf="filteredStudents.length === 0">
+		<p style="font-size:50px; line-height:1" class="text-break">No students were found.</p>
+	</div>
+
+
+	<table id="students-table" class="table table-striped border" *ngIf="filteredStudents.length>0">
+		<thead>
+		<tr>
+			<th scope="col">Nr.</th>
+			<th scope="col" (click)="sortByFirstname()" >Firstname {{firstnameAsc ? '&#9660;' : '&#9650;'}}</th>
+			<th scope="col" (click)="sortByLastname()" >Lastname {{lastnameAsc ? '&#9660;' : '&#9650;'}}</th>
+			<th scope="col" (click)="sortByEmail()">Email {{emailAsc ? '&#9660;' : '&#9650;'}}</th>
+			<th scope="col" (click)="sortByBirthDate()">Birthdate {{birthDateAsc ? '&#9660;' : '&#9650;'}}</th>
+			<th>Options</th>
+		</tr>
+		</thead>
+		<tbody>
+
+			<tr *ngFor="let student of filteredStudents; index as i">
+				<th scope="row">{{i + 1}}</th>
+				<td>{{student.firstname}}</td>
+				<td>{{student.lastname}}</td>
+				<td><a class="link-success" href="mailto:{{student.email}}">{{student.email}}</a></td>
+				<td>{{student.birthDate}}</td>
+				<td><button type="button" class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+  <div id="student-list" >
+	<div *ngFor="let student of filteredStudents; index as i" class="student-item">
+		<b scope="row">Nr. {{i + 1}}</b>
+		<div class="info">
+			<div class="firstname-lastname" style="width:200px">
+				<li><b>Firstname: </b> {{student.firstname}}</li>
+				<li><b>Lastname: </b> {{student.lastname}}</li>
+			</div>
+			<div class="email-birth-date" style="width:300px;">
+				<li><b>Email: </b> <a  class="link-secondary" href="mailto:{{student.email}}">{{student.email}}</a></li>
+				<li><b>Birth date: </b> {{student.birthDate}}</li>
+			</div>
+			<button type="button" class="btn btn-danger mt-4" (click)="deleteStudent(student.id)">Delete</button>
+		</div>
+	</div>
   </div>
 
-<table class="table table-striped border" *ngIf="students.length>0">
-    <thead>
-      <tr>
-        <th scope="col">Nr.</th>
-        <th scope="col" (click)="sortByFirstname()" >Firstname {{firstnameAsc ? '&#9660;' : '&#9650;'}}</th>
-        <th scope="col" (click)="sortByLastname()" >Lastname {{lastnameAsc ? '&#9660;' : '&#9650;'}}</th>
-        <th scope="col" (click)="sortByEmail()">Email {{emailAsc ? '&#9660;' : '&#9650;'}}</th>
-        <th scope="col" (click)="sortByBirthDate()">Birthdate {{birthDateAsc ? '&#9660;' : '&#9650;'}}</th>
-      </tr>
-    </thead>
-    <tbody>
-
-        <tr *ngFor="let student of students; index as i">
-            <th scope="row">{{i}}</th>
-            <td>{{student.firstname}}</td>
-            <td>{{student.lastname}}</td>
-            <td><a sttyle="width:100px;" href="mailto:{{student.email}}">{{student.email}}</a></td>
-            <td>{{student.birthDate}}</td>
-        </tr>
-    </tbody>
-  </table>
-
 </div>
+

@@ -8,3 +8,41 @@ th:active:not(:first-child) {
     background-color: lightgray;
 }
 
+td:hover:not(:last-child) {
+    transform:scale(1.2);
+    background-color:peachpuff;
+}
+
+#students-table {
+    margin:auto;
+}
+
+.student-item {
+    border:1px solid #000;
+    padding:10px;
+}
+
+#student-list {
+    display:none;
+    margin:30px 0;
+}
+
+.info {
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width:780px) {
+    #students-table {
+        display:none;
+    }
+    #student-list {
+        display:block;
+    }
+
+}
+
+
+

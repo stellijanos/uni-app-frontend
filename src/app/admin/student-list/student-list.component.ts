@@ -12,6 +12,7 @@ import { Component, OnInit} from '@angular/core';
 export class StudentListComponent implements OnInit {
 
   students : User[] = [];
+  filteredStudents : User[] = [];
 
   firstnameAsc :boolean = true;
   lastnameAsc : boolean = true;
@@ -24,12 +25,13 @@ export class StudentListComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.getAllStudents().subscribe( response => {
       this.students = response;
+      this.filteredStudents = this.students;
     });
   }
 
 
   sortByFirstname() {
-    this.students.sort((a, b) => 
+    this.filteredStudents.sort((a, b) => 
       this.firstnameAsc ? a.firstname.localeCompare(b.firstname) : b.firstname.localeCompare(a.firstname)
     );
     this.firstnameAsc = !this.firstnameAsc;
@@ -37,21 +39,21 @@ export class StudentListComponent implements OnInit {
 
 
   sortByLastname() {
-    this.students.sort((a, b) => 
+    this.filteredStudents.sort((a, b) => 
       this.lastnameAsc ? a.lastname.localeCompare(b.lastname) : b.lastname.localeCompare(a.lastname)
     );
     this.lastnameAsc = !this.lastnameAsc;
   }
 
   sortByEmail() {
-    this.students.sort((a, b) => 
+    this.filteredStudents.sort((a, b) => 
       this.emailAsc ? a.email.localeCompare(b.email) : b.email.localeCompare(a.email)
     );
     this.emailAsc = !this.emailAsc;
   }
 
   sortByBirthDate() {
-    this.students.sort((a, b) => {
+    this.filteredStudents.sort((a, b) => {
       const date_a = new Date(a.birthDate).getTime();
       const date_b = new Date(b.birthDate).getTime();
 
@@ -61,6 +63,25 @@ export class StudentListComponent implements OnInit {
     this.birthDateAsc = !this.birthDateAsc;
   }
 
+  deleteStudent(id: number) {
+    this.adminService.deleteStudent(id).subscribe(response => {
+      console.log(response);
+      this.students = this.students.filter(student => student.id !== id);
+      this.filteredStudents = this.filteredStudents.filter(student => student.id !== id);
+    });
+    console.log(id);
+  }
+
+  searchStudents(event: Event) {
+      let searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
+
+      this.filteredStudents = this.students.filter( student => 
+        student.firstname.toLowerCase().includes(searchTerm) || 
+        student.lastname.toLowerCase().includes(searchTerm) ||
+        student.email.toLowerCase().includes(searchTerm) ||
+        student.birthDate.toString().includes(searchTerm)
+      )
+  }
   
 
 }
