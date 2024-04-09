@@ -52,8 +52,6 @@ export class LoginComponent implements OnInit {
           this.successMessage = "User successfully logged in!";
           localStorage.setItem('token', login_response.login_token);
           let role = login_response.login_token !== environment.login_token ? 'STUDENT' : 'ADMIN';
-          localStorage.setItem('role', role);
-          localStorage.setItem('logged_in', "YES");
         
           if (role !== 'ADMIN') {
             this.router.navigate(['/student']);

@@ -26,52 +26,5 @@ export class AdminGuard{
 		})
 	  );
   }
-
-//   canActivateChild(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {
-// 	if (this.authService.loggedIn === "YES") {
-
-// 		if ( this.authService.userRole ==="ADMIN") {
-// 			return true;
-// 		  } else {
-// 			this.router.navigate(['/access-denied']);
-// 			return false;
-// 		  }
-// 	  } else {
-// 		this.router.navigate(['/login']);
-// 		return false;
-// 	}
-//   }
 }
-
-// export const canActivate: CanActivateFn = (route: ActivatedRouteSnapshot,state: RouterStateSnapshot) => {
-// 	if (inject(AuthenticationService).loggedIn === "YES") {
-
-// 		if ( inject(AuthenticationService).userRole ==="ADMIN") {
-// 			return true;
-// 		  } else {
-// 			inject(Router).navigate(['/access-denied']);
-// 			return false;
-// 		  }
-// 	  } else {
-// 		inject(Router).navigate(['/login']);
-// 		return false;
-// 	}
-// }
-
-
-
-// export const canActivateChild: CanActivateChildFn = (route: ActivatedRouteSnapshot,state: RouterStateSnapshot) => {
-// 	if (inject(AuthenticationService).loggedIn === "YES" ) {
-
-// 		if ( inject(AuthenticationService).userRole === "ADMIN") {
-// 			return true;
-// 		  } else {
-// 			inject(Router).navigate(['/access-denied']);
-// 			return false;
-// 		  }
-// 	  } else {
-// 		inject(Router).navigate(['/login']);
-// 		return false;
-// 	}
-// }
 

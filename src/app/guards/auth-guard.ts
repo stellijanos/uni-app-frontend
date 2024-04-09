@@ -1,7 +1,6 @@
-import { Injectable, inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from '@angular/router';
+import { Injectable} from '@angular/core';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthenticationService } from '../authentication/authentication.service';
-import { environment } from '../../environments/environment';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -29,12 +28,3 @@ export class AuthGuard {
     );
   }
 }
-
-// export const canActivateGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-//   if (inject(AuthenticationService).loggedIn === "YES") {
-//     return true;
-//   } else {
-//     inject(Router).navigate(['/login']);
-//     return false;
-//   }
-// };
