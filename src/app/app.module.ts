@@ -12,6 +12,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthGuard } from './guards/auth-guard';
 import { AdminGuard } from './guards/admin-guard';
 import { StudentGuard } from './guards/student-guard';
+import { StudentModule } from './student/student.module';
 
 
 
@@ -26,7 +27,8 @@ import { StudentGuard } from './guards/student-guard';
     HomeModule,
     AuthenticationModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
+    StudentModule
   ],
   providers: [
     provideClientHydration(),

@@ -27,6 +27,7 @@ const routes: Routes = [
   {path: 'admin/students', component: StudentListComponent, canActivate: [AdminGuard]},
   {path: 'student', component:StudentComponent, canActivate:[StudentGuard]},
   {path: 'access-denied', component: UnauthorizedComponent},
+  {path: 'student-navnar', component: StudentComponent},
   {path: '**', component: PageNotFoundComponent}
  
 ];

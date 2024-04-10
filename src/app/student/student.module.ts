@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudentComponent } from './student/student.component';
-import { NavbarComponent } from './navbar/navbar.component';
-
-
+import { StudentComponent } from './student.component';
+import { Router, RouterModule } from '@angular/router';
+import { StudentNavbarComponent } from './student-navbar/student-navbar.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     StudentComponent,
-    NavbarComponent
+    StudentNavbarComponent,
+    EditProfileComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class StudentModule { }

@@ -1,0 +1,89 @@
+ 
+<div class="modal fade" id="edit-profile" tabindex="-1" aria-labelledby="edit-profile-label" aria-hidden="true">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+        <div class="modal-header d-flex flex-direction-column">
+            <h1 class="modal-title fs-5" id="edit-profile-label">Edit Profile ({{editForm.get('email')?.value ?? '-'}})</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>(All fields marked with * are mandatory)</p>
+            <p *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</p>
+            <p *ngIf="successMessage" class="alert alert-success">{{successMessage}}</p>
+            <div class="form-floating mb-3  w-100">
+                <input 
+                    type="text"
+                    id="firstname" 
+                    class="form-control" 
+                    placeholder="Firstname" 
+                    formControlName="firstname"
+                    [ngClass]="{
+                        'border-danger': editForm.get('firstname')?.invalid && editForm.get('firstname')?.touched,
+                        'border-success': editForm.get('firstname')?.valid && editForm.get('firstname')?.touched
+                        }"
+                >
+                <label for="firstname">Firstname*</label>
+                <p class="text-danger text-start" *ngIf="editForm.get('firstname')?.invalid && editForm.get('firstname')?.touched">
+                    Firstname is required!
+                </p>
+            </div>
+
+            <div class="form-floating mb-3  w-100">
+                <input type="text" id="lastname" class="form-control" placeholder="Lastname" formControlName="lastname"
+                [ngClass]="{
+                    'border-danger': editForm.get('lastname')?.invalid && editForm.get('lastname')?.touched,
+                    'border-success': editForm.get('lastname')?.valid && editForm.get('lastname')?.touched
+                    }"
+                >
+                <label for="lastname">Lastname*</label>
+                <p class="text-danger text-start" *ngIf="editForm.get('lastname')?.invalid && editForm.get('lastname')?.touched">
+                    Lastname is required!
+                </p>
+            </div>
+            <div class="form-floating mb-3  w-100">
+                <input type="date" id="birth-date" class="form-control" placeholder="Birthdate" formControlName="birthDate"
+                [ngClass]="{
+                    'border-danger': editForm.get('birthDate')?.invalid && editForm.get('birthDate')?.touched,
+                    'border-success': editForm.get('birthDate')?.valid && editForm.get('birthDate')?.touched
+                    }"
+                >
+                <label for="birth-date">Birthdate*</label>
+                <p class="text-danger text-start" *ngIf="editForm.get('birthDate')?.invalid && editForm.get('birthDate')?.touched">
+                    Birthdate is required!
+                </p>
+            </div>
+            <div class="mb-3">
+                <div class="input-group w-100">
+                    <div class="form-floating">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="form-control" 
+                            placeholder="Password" 
+                            autocomplete="current-password" 
+                            aria-label="Password" 
+                            aria-describedby="show-password"
+                            formControlName="password" 
+                            [ngClass]="{
+                                'border-danger': editForm.get('password')?.invalid && editForm.get('password')?.touched,
+                                'border-success': editForm.get('password')?.valid && editForm.get('password')?.touched
+                                }"
+                            >
+                        <label for="password">Password</label>
+                    </div>
+                    <span class="input-group-text" id="show-password" (click)="show_password()">
+                        <i class="bi bi-eye-slash-fill"></i>
+                    </span>
+                </div>
+                <p class="text-danger text-start" *ngIf="editForm.get('password')?.invalid && editForm.get('password')?.touched">
+                    Password is required!
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="editForm.invalid" >Save changes</button>
+        </div>
+        </div>
+    </form>
+</div>

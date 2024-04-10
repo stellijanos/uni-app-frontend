@@ -1,0 +1,38 @@
+
+.main {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:85vh;
+    gap:0.5rem;
+}
+
+#opcacity {
+    background-color:red;
+    height:100%;
+    width:100%;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+#student-infos {
+    padding:30px;
+    font-size:30px;
+    border-radius: 10px;
+    line-height:1;
+}
+
+.info {
+    max-width:500px;
+}
+
+
+@media screen and (max-width:500px) {
+    #student-info {
+        font-size:20px;
+    }
+}
