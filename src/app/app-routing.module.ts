@@ -11,12 +11,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AdminComponent } from './admin/admin.component';
 import { StudentListComponent } from './admin/student-list/student-list.component';
 import { GradeComponent } from './admin/grade/grade.component';
+import { LogoutComponent } from './authentication/logout/logout.component';
 
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
   {path: "login", component:LoginComponent},
   {path: "register", component:RegisterComponent},
+  {path: "logout", component:LogoutComponent},
   {path: "unauthorized", component:UnauthorizedComponent},
   // {path: 'admin', component: AdminComponent, canActivate: [AdminGuard], children: [
   //   {path: 'students', component:StudentListComponent},
@@ -24,7 +26,7 @@ const routes: Routes = [
   // ]},
   {path : 'admin', component: AdminComponent, canActivate: [AdminGuard]},
   {path: 'admin/students', component: StudentListComponent, canActivate: [AdminGuard]},
-  {path: 'grades', component: GradeComponent, canActivate: [AdminGuard]},
+  {path: 'admin/grades', component: GradeComponent, canActivate: [AdminGuard]},
   {path: 'student', component:StudentComponent, canActivate:[StudentGuard]},
   {path: 'access-denied', component: UnauthorizedComponent},
   {path: '**', component: PageNotFoundComponent}

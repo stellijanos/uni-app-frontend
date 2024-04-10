@@ -8,12 +8,14 @@ import { HomeModule } from '../home/home.module';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AuthenticationService } from './authentication.service';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,

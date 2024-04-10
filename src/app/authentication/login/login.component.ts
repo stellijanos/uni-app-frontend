@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       this.authenticationService.loginUser(user).subscribe( response => {
 
         this.errorMessage = '';
-        console.log(JSON.stringify(response));
+        // console.log(JSON.stringify(response));
 
         let json_response = JSON.stringify(response);
         let login_response = JSON.parse(json_response);

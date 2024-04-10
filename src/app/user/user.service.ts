@@ -26,4 +26,5 @@ export class UserService {
   getProfile(token: string): Observable<User> {
     return this.http.get<User>(`${environment.apiUrl}/user/${token}`, this.httpOptions);
   }
+
 }

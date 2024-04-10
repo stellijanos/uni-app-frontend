@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit{
       this.authenticationService.registerUser(user).subscribe( (response) => {
 
         this.errorMessage = '';
-        console.log(JSON.stringify(response));
+        // console.log(JSON.stringify(response));
 
         let json_response = JSON.stringify(response);
         let register_response = JSON.parse(json_response);

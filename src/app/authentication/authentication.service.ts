@@ -28,16 +28,22 @@ export class AuthenticationService {
   }
 
 
-  loginUser(user: LoginUser):Observable<string> {
-    return this.http.post<string>(this.apiLoginUrl, user, this.httpOptions);
-  }
-
   registerUser(user: RegisterUser): Observable<string> {
     return this.http.post<string>(this.apiRegisterUrl, user, this.httpOptions);
   }
 
+
+  loginUser(user: LoginUser):Observable<string> {
+    return this.http.post<string>(this.apiLoginUrl, user, this.httpOptions);
+  }
+  
+  logout(token: string): Observable<string> {
+    return this.http.get<string>(`${environment.apiUrl}/logout/${token}`, this.httpOptions);
+  }
+
   getLoginInfo(): Observable<string> {
-    let token:string = localStorage.getItem('token') ?? '';
+    let token:string = localStorage.getItem('token') ?? 'a';
     return this.http.post<string>(`${this.apiIsLoggedInUrl}/${token}`, null, this.httpOptions);
   }
 }
+
