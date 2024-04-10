@@ -1,8 +1,13 @@
 <app-navbar></app-navbar>
 
 <div class="container mb-5" >
-	<div class="container text-center mb-3 mt-3" *ngIf="students.length > 0">
-		<input type="text" class="form-control w-100" placeholder="Search for student(s)" (keyup)="searchStudents($event)">
+	<div class="container text-center mb-3 mt-3" *ngIf="students.length > 0" id="options-bar">
+		<div class="search" style="width:60%">
+			<input type="text" class="form-control w-100" id="search-student" placeholder="Search for student(s)" (keyup)="searchStudents($event)">
+		</div>
+		<div class="refresh">
+			<button class="btn btn-warning" id="refresh-btn" (click)="refreshList()">Refresh list</button>
+		</div>
 	</div>
 
 	<div class="container text-center" style="margin:100px 0" *ngIf="filteredStudents.length === 0">
@@ -18,17 +23,18 @@
 			<th scope="col" (click)="sortByLastname()" >Lastname {{lastnameAsc ? '&#9660;' : '&#9650;'}}</th>
 			<th scope="col" (click)="sortByEmail()">Email {{emailAsc ? '&#9660;' : '&#9650;'}}</th>
 			<th scope="col" (click)="sortByBirthDate()">Birthdate {{birthDateAsc ? '&#9660;' : '&#9650;'}}</th>
+			<th scope="col" (click)="sortByGrade()">Grade {{gradeAsc ? '&#9660;' : '&#9650;'}}</th>
 			<th>Options</th>
 		</tr>
 		</thead>
 		<tbody>
-
 			<tr *ngFor="let student of filteredStudents; index as i">
 				<th scope="row">{{i + 1}}</th>
 				<td>{{student.firstname}}</td>
 				<td>{{student.lastname}}</td>
 				<td><a class="link-success" href="mailto:{{student.email}}">{{student.email}}</a></td>
 				<td>{{student.birthDate}}</td>
+				<td>{{student.grade === 0 ? '-' : student.grade }}</td>
 				<td><button type="button" class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button></td>
 			</tr>
 		</tbody>
@@ -46,7 +52,9 @@
 			<div class="email-birth-date" style="width:300px;">
 				<li><b>Email: </b> <a  class="link-secondary" href="mailto:{{student.email}}">{{student.email}}</a></li>
 				<li><b>Birth date: </b> {{student.birthDate}}</li>
+				<li><b>Grade: </b> {{student.grade}}</li>
 			</div>
+
 			<button type="button" class="btn btn-danger mt-4" (click)="deleteStudent(student.id)">Delete</button>
 		</div>
 	</div>

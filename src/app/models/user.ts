@@ -5,4 +5,5 @@ export interface User {
     email: string,
     birthDate: Date,
     login_token: string,
+    grade: number
 }

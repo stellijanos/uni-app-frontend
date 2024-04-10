@@ -8,9 +8,8 @@ th:active:not(:first-child) {
     background-color: lightgray;
 }
 
-td:hover:not(:last-child) {
-    transform:scale(1.2);
-    background-color:peachpuff;
+tr:hover {
+    transform:scale(1.05);
 }
 
 #students-table {
@@ -44,5 +43,15 @@ td:hover:not(:last-child) {
 
 }
 
+.btn:active {
+    transform:scale(1.05);
+}
 
+
+#options-bar {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    gap:1rem;
+}
 

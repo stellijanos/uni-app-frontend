@@ -18,15 +18,14 @@ export class StudentListComponent implements OnInit {
   lastnameAsc : boolean = true;
   emailAsc : boolean = true;
   birthDateAsc : boolean = true;
+  gradeAsc : boolean = true;
+
   
-  constructor(private adminService: AdminService, private _liveAnnouncer: LiveAnnouncer) {}
+  constructor(private adminService: AdminService) {}
 
 
   ngOnInit(): void {
-    this.adminService.getAllStudents().subscribe( response => {
-      this.students = response;
-      this.filteredStudents = this.students;
-    });
+    this.refreshList();
   }
 
 
@@ -63,6 +62,13 @@ export class StudentListComponent implements OnInit {
     this.birthDateAsc = !this.birthDateAsc;
   }
 
+  sortByGrade() {
+    this.filteredStudents.sort((a,b) => this.gradeAsc ? a.grade - b.grade : b.grade - a.grade );
+    this.gradeAsc = !this.gradeAsc;
+  }
+
+
+
   deleteStudent(id: number) {
     this.adminService.deleteStudent(id).subscribe(response => {
       console.log(response);
@@ -81,6 +87,13 @@ export class StudentListComponent implements OnInit {
         student.email.toLowerCase().includes(searchTerm) ||
         student.birthDate.toString().includes(searchTerm)
       )
+  }
+
+  refreshList() {
+    this.adminService.getAllStudents().subscribe( response => {
+      this.students = response;
+      this.filteredStudents = this.students;
+    });
   }
   
 

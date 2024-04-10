@@ -10,9 +10,7 @@ import { StudentGuard } from './guards/student-guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminComponent } from './admin/admin.component';
 import { StudentListComponent } from './admin/student-list/student-list.component';
-import { GradeComponent } from './admin/grade/grade.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
-import { EditProfileComponent } from './admin/edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
@@ -27,7 +25,6 @@ const routes: Routes = [
   // ]},
   {path : 'admin', component: AdminComponent, canActivate: [AdminGuard]},
   {path: 'admin/students', component: StudentListComponent, canActivate: [AdminGuard]},
-  {path: 'admin/grades', component: GradeComponent, canActivate: [AdminGuard]},
   {path: 'student', component:StudentComponent, canActivate:[StudentGuard]},
   {path: 'access-denied', component: UnauthorizedComponent},
   {path: '**', component: PageNotFoundComponent}
