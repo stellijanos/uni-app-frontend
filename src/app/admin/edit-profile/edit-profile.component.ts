@@ -19,6 +19,15 @@ export class EditProfileComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
 
+  profile: EditUser = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    birthDate: '',
+    password: ''
+  };
+
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -50,13 +59,30 @@ export class EditProfileComponent implements OnInit {
       if (response.response !== "success") {
         return;
       }
-      this.editForm.patchValue({
-        firstname: response.firstname ?? '', 
-        lastname: response.lastname ?? '',
-        email: response.email ?? '',
-        birthDate: response.birthDate ?? ''
-      })
+
+      this.profile.firstname = response.firstname ?? '';
+      this.profile.lastname = response.lastname ?? '';
+      this.profile.email = response.email ?? '';
+      this.profile.birthDate = response.birthDate ?? '';
+
+      this.editForm.patchValue(this.profile);
     })
+
+    let editModal = document.getElementById("edit-profile");
+
+    editModal?.addEventListener('show.bs.modal', () => {
+        this.resetForm();
+        this.errorMessage = '';
+        this.successMessage = '';
+    })
+  }
+
+  resetForm() {
+    this.editForm.get('firstname')?.reset(this.profile.firstname);
+      this.editForm.get('lastname')?.reset(this.profile.lastname);
+      this.editForm.get('email')?.reset(this.profile.email);
+      this.editForm.get('birthDate')?.reset(this.profile.birthDate);
+      this.editForm.get('password')?.reset('');
   }
 
 
@@ -82,7 +108,9 @@ export class EditProfileComponent implements OnInit {
         } else {
           this.successMessage = "Profile successfully updated!"
         }
-        this.editForm.get('password')?.reset('');
+
+        this.profile = this.editForm.value;
+        this.resetForm();
       });
     }
   }
@@ -100,6 +128,8 @@ export class EditProfileComponent implements OnInit {
       }
     }
   }
+
+
 
 }
 

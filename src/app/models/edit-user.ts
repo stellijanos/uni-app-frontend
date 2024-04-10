@@ -2,7 +2,7 @@ export interface EditUser {
     firstname: string,
     lastname: string,
     email:string,
-    birtDate:string,
+    birthDate:string,
     password: string
 }
 

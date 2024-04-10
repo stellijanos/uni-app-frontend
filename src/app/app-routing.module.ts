@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { StudentListComponent } from './admin/student-list/student-list.component';
 import { GradeComponent } from './admin/grade/grade.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
+import { EditProfileComponent } from './admin/edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
