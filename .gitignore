@@ -44,3 +44,4 @@ Thumbs.db
 
 # other
 /src/environments/*
+/src/assets/images/*

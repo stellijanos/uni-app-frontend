@@ -107,6 +107,10 @@
                 Passwords don't match!
             </p>
         </div>
-        <button class="btn btn-success w-100" [disabled]="registerForm.invalid">Register</button>
+        <button class="btn btn-success w-100" 
+        [disabled]="registerForm.invalid ||  
+        (registerForm.get('password')?.value !== registerForm.get('confirmPassword')?.value && 
+        registerForm.get('password')?.value.length>0)"
+        >Register</button>
     </form>
 </div>

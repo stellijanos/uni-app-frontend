@@ -14,7 +14,7 @@ import { LogoutComponent } from './authentication/logout/logout.component';
 
 
 const routes: Routes = [
-  {path: "", component:HomeComponent},
+  {path: "", redirectTo:'/login', pathMatch: 'full'},
   {path: "login", component:LoginComponent},
   {path: "register", component:RegisterComponent},
   {path: "logout", component:LogoutComponent},

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>UniAppFrontend</title>
+  <title>Uni App</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -14,8 +14,11 @@
 <body class="mat-typography">
   <app-root></app-root>
   <footer>
-      <p class="text-center">&copy; 2024 Janos</p>
+      <p class="text-center">&copy;<span id="year"></span> 2024 Janos & Cata</p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById('year').innerText = getyear();
+  </script>
 </body>
 </html>
