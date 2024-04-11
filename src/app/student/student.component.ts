@@ -12,10 +12,24 @@ export class StudentComponent implements OnInit {
   firstname :string = '';
   lastname :string = '';
   email: string = '';
-  birthDate: Date = new Date();
+  birthDate: any;
+  code: number = Math.floor((Math.random() * 900) + 100);
+  current_semester: string = '2';
+  current_funding : string = '';
+
+
+  faculty: string = 'Math and Computer Science';
+  section: string = 'Computer Science in german';
+  academic_year : string = '2023/2024';
+  semester : string = '1';
+  funding : string = 'TAX';
   grade : number = 0;
+ 
+ 
   ranking: number = 0;
   total_num: number = 0;
+  
+  
 
 
   constructor(private userService: UserService) {}
@@ -43,6 +57,7 @@ export class StudentComponent implements OnInit {
       this.grade = response.grade ?? 0;
       this.ranking = response.ranking ?? 0;
       this.total_num = response.total ?? 0;
+      this.current_funding = this.grade > 7 ? 'Tax free' : 'Tax';
     })
   }
 

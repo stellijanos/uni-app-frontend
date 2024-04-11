@@ -2,8 +2,8 @@
 <app-student-navbar></app-student-navbar>
 
 
-<div class="main">
-    <div id="opacity">
+<div class="main mb-3">
+    <div id="opacity" style="display:none;">
         <div id="student-infos" class="bg-light">
             <div class="info mb-3">
                 <p><b>{{firstname}} {{lastname}}</b></p>
@@ -22,4 +22,81 @@
             </div>
         </div>
     </div>
+
+
+<table class="table mb-5 table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Firstname</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Email</th>
+        <th scope="col">BirthDate</th>
+        <th scope="col">Unique Code</th>
+        <th scope="col">Current Semester</th>
+        <th scope="col">Current funding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">{{firstname}}</td>
+        <td scope="row">{{lastname}}</td>
+        <td scope="row">{{email}}</td>
+        <td scope="row">{{birthDate}}</td>
+        <td scope="row">{{code}}</td>
+        <td scope="row">{{current_semester}}</td>
+        <td scope="row">{{current_funding}}</td>
+      </tr>
+    </tbody>
+</table>
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Faculty</th>
+        <th scope="col">Section</th>
+        <th scope="col">Academic Year</th>
+        <th scope="col">Semester</th>
+        <th scope="col">Funding</th>
+        <th scope="col">Final Grade</th>
+        <th scope="col">Failed/Passed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">{{faculty}}</td>
+        <td scope="row">{{section}}</td>
+        <td scope="row">{{academic_year}}</td>
+        <td scope="row">{{semester}}</td>
+        <td scope="row">{{funding}}</td>
+        <td scope="row">{{grade}}</td>
+        <td scope="row">
+            <p class="alert" [ngClass]="grade >= 5 ? 'alert-success' : 'alert-danger'">{{grade >= 5 ? '(PASSED)' : '(FAILED)'}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="alternative-view bg-light">
+    <div style="list-style-type: none;">
+        <li><b>Firstname:</b> {{firstname}}</li>
+        <li><b>Lastname:</b> {{lastname}}</li>
+        <li><b>Email:</b> {{email}}</li>
+        <li><b>BirthDate:</b> {{birthDate}}</li>
+        <li><b>Unique Code:</b> {{code}}</li>
+        <li><b>Current Semester:</b> {{current_semester}}</li>
+        <li><b>Current funding:</b> {{current_funding}}</li>
+    </div>
+    <div class="vr"></div>
+    <hr class="border border-dark w-100">
+    <div style="list-style-type: none;">
+        <li><b>Facultaty:</b> {{faculty}}</li>
+        <li><b>Section:</b> {{section}}</li>
+        <li><b>Academic Year:</b> {{academic_year}}</li>
+        <li><b>Semester:</b> {{semester}}</li>
+        <li class="mb-2"><b>Funding:</b> {{funding}}</li>
+        <p class="alert" [ngClass]="grade >= 5 ? 'alert-success' : 'alert-danger'">{{grade}} {{grade >= 5 ? '(PASSED)' : '(FAILED)'}}</p>
+    </div>
+  </div>
 </div>
