@@ -3,27 +3,7 @@
 
 
 <div class="main mb-3">
-    <div id="opacity" style="display:none;">
-        <div id="student-infos" class="bg-light">
-            <div class="info mb-3">
-                <p><b>{{firstname}} {{lastname}}</b></p>
-            </div>
-            <div class="info mb-3">
-                <p>{{email}}</p>
-            </div>
-            <div class="info mb-3">
-                <p>{{birthDate}}</p>
-            </div>
-            <div class="info text-center mb-3">
-                <p class="alert" [ngClass]="grade >= 5 ? 'alert-success' : 'alert-danger'"> {{grade}} {{grade >= 5 ? '(PASSED)' : '(FAILED)'}}</p>
-            </div>
-            <div class="info text-center">
-                <p class="alert alert-warning">{{ranking}} out of {{total_num}}</p>
-            </div>
-        </div>
-    </div>
-
-
+  
 <table class="table mb-5 table-striped">
     <thead>
       <tr>
