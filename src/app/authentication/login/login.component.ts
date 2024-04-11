@@ -79,5 +79,10 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+
+  getCurrentRoute() {
+    return this.router.url;
+  }
+
 }
 

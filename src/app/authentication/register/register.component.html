@@ -1,8 +1,8 @@
 
 
 <app-home></app-home>
-<div id="register-div" class="d-flex flex-column justify-content-center align-items-center" >
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="register-form" class="bg-light text-center">
+<div id="register-div" class="d-flex flex-column justify-content-center align-items-center">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="register-form" class="text-center" [ngClass]="getCurrentRoute() === '/register' ? 'bg-darkgrey': 'bg-light' " > 
         <p>(All fields marked with * are mandatory)</p>
         <p *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</p>
         <p *ngIf="successMessage" class="alert alert-success">{{successMessage}}</p>

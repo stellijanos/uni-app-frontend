@@ -67,5 +67,10 @@ export class RegisterComponent implements OnInit{
       }
     }
   }
+
+  getCurrentRoute() {
+    return this.router.url;
+  }
+
 }
 

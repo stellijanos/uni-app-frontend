@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="text-center bg-light" id="auth-options">
-    <button class="btn btn-primary mx-2" [routerLink]="['/login']">LogIn</button>
-    <button class="btn btn-primary mx-2" [routerLink]="['/register']">Register</button>    
+    <button class="btn auth-btn" [routerLink]="['/login']" [ngClass]="getCurrentRoute() === '/login' ? 'btn-darkgrey': 'btn-light'">LogIn</button>
+    <button class="btn auth-btn" [routerLink]="['/register']" [ngClass]="getCurrentRoute() === '/register' ? 'btn-darkgrey': 'btn-light'">Register</button>   
 </div>
 
