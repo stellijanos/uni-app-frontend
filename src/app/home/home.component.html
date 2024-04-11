@@ -5,8 +5,8 @@
         <h1>Welcome to our Uni-App</h1>
     </div>
 </div>
-<div class="text-center bg-light" id="auth-options">
-    <button class="btn auth-btn" [routerLink]="['/login']" [ngClass]="getCurrentRoute() === '/login' ? 'btn-darkgrey': 'btn-light'">LogIn</button>
-    <button class="btn auth-btn" [routerLink]="['/register']" [ngClass]="getCurrentRoute() === '/register' ? 'btn-darkgrey': 'btn-light'">Register</button>   
+<div class="text-center" id="auth-options">
+    <button class="btn auth-btn" [routerLink]="['/login']" [ngClass]="getCurrentRoute() === '/login' ? 'btn-light current-auth-page': 'btn-darkgrey'">LogIn</button>
+    <button class="btn auth-btn" [routerLink]="['/register']" [ngClass]="getCurrentRoute() === '/register' ? 'btn-light current-auth-page': 'btn-darkgrey'">Register</button>   
 </div>
 

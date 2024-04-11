@@ -10,17 +10,17 @@ export class AuthGuard {
 
   constructor(private authService: AuthenticationService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {
+  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean | Observable<boolean> {
     return this.authService.getLoginInfo().pipe(
-      map(response => {
-        let json_response = JSON.stringify(response);
-        let res = JSON.parse(json_response);
-        if (res.is_logged_in !== "YES") {
-          this.router.navigate(['/login']);
-          return false;
-        }
-        if (res.role !== "ADMIN") {
-          this.router.navigate(['/access-denied']);
+      map(res => {
+        let json_res = JSON.stringify(res);
+        let response = JSON.parse(json_res);
+        if (response.is_logged_in === "YES") {
+          if (response.role === "ADMIN") {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/student']);
+          }
           return false;
         }
         return true;

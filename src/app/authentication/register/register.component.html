@@ -2,7 +2,7 @@
 
 <app-home></app-home>
 <div id="register-div" class="d-flex flex-column justify-content-center align-items-center">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="register-form" class="text-center" [ngClass]="getCurrentRoute() === '/register' ? 'bg-darkgrey': 'bg-light' " > 
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="register-form" class="text-center bg-light" > 
         <p>(All fields marked with * are mandatory)</p>
         <p *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</p>
         <p *ngIf="successMessage" class="alert alert-success">{{successMessage}}</p>
@@ -82,7 +82,7 @@
                             'border-success': registerForm.get('password')?.valid && registerForm.get('password')?.touched
                             }"
                         >
-                    <label for="password">Password</label>
+                    <label for="password">Password*</label>
                 </div>
                 <span class="input-group-text" id="show-password" (click)="show_password()">
                     <i class="bi bi-eye-slash-fill"></i>

@@ -1,7 +1,7 @@
 
 <app-home></app-home>
 <div id="login-div" class="d-flex flex-column justify-content-center align-items-center" >
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"  id="login-form" class="bg-light text-center" [ngClass]="getCurrentRoute() === '/login' ? 'bg-darkgrey': 'bg-light' ">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"  id="login-form" class="bg-light text-center">
         <p *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</p>
         <p *ngIf="successMessage" class="alert alert-success">{{successMessage}}</p>
         <div class="form-floating mb-3  w-100">

@@ -33,7 +33,7 @@ data = JSON.parse(localStorage.getItem('grades') ?? '{}');
 
 chartOptions = {
 	title: {
-	  text: "Student grades"
+	  text: "Students final grades for the 1st Semester"
 	},
 	data: [{
 	  type: "column",
