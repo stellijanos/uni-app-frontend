@@ -102,7 +102,8 @@
             <label for="confirm-password">Confirm password*</label>
             <p class="text-danger text-start" 
                 *ngIf=" (registerForm.get('confirmPassword')?.invalid  && registerForm.get('confirmPassword')?.touched) || 
-                (registerForm.get('password')?.value !== registerForm.get('confirmPassword')?.value && registerForm.get('password')?.touched)"
+                (registerForm.get('password')?.value !== registerForm.get('confirmPassword')?.value && 
+                registerForm.get('password')?.touched && registerForm.get('confirmPassword')?.value > 0)"
             >
                 Passwords don't match!
             </p>
