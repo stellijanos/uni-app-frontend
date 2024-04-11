@@ -31,6 +31,10 @@ export class StudentListComponent implements OnInit {
     this.refreshList();
   }
 
+  formatGrade(grade: number) {
+    return parseFloat(grade.toFixed(2));
+  }
+
 
   sortByFirstname() {
     this.filteredStudents.sort((a, b) => 

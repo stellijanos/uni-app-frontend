@@ -13,39 +13,41 @@ export class AdminComponent implements OnInit {
 
   grades: { label: string, y: number }[] = [];
 
+  chartOptions : any;
+
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-
-    this.adminService.getGradesRate().subscribe(res => {
-      let json_res = JSON.stringify(res);
-      
-
-      localStorage.setItem('grades', json_res);
-
-    });
-
+    this.refreshTable();
 }
 
-data = JSON.parse(localStorage.getItem('grades') ?? '{}');
+data : any;
 
 
+  refreshTable() {
+	this.adminService.getGradesRate().subscribe(res => {
+		let json_res = JSON.stringify(res);
+		localStorage.setItem('grades', json_res);
+	});
 
-chartOptions = {
-	title: {
-	  text: "Students final grades for the 1st Semester"
-	},
-	data: [{
-	  type: "column",
-	  dataPoints: [
-		{ label: "5.00-5.99",  y: this.data[5]  },
-		{ label: "6.00-6.99", y: this.data[6]  },
-		{ label: "7.00-7.99", y: this.data[7]  },
-		{ label: "8.00-8.99",  y: this.data[8]  },
-		{ label: "9.00-9.99",  y: this.data[9]  },
-		{ label: "10.00",  y: this.data[10]  }
-	  ]
-	}]                
-  };
+	this.data = JSON.parse(localStorage.getItem('grades') ?? '{}');
+
+	this.chartOptions = {
+		title: {
+		  text: "Students final grades for the 1st Semester"
+		},
+		data: [{
+		  type: "column",
+		  dataPoints: [
+			{ label: "5.00-5.99",  y: this.data[5]  },
+			{ label: "6.00-6.99", y: this.data[6]  },
+			{ label: "7.00-7.99", y: this.data[7]  },
+			{ label: "8.00-8.99",  y: this.data[8]  },
+			{ label: "9.00-9.99",  y: this.data[9]  },
+			{ label: "10.00",  y: this.data[10]  }
+		  ]
+		}]                
+	  };
+  }
 
 }

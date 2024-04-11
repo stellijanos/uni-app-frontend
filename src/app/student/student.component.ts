@@ -54,7 +54,7 @@ export class StudentComponent implements OnInit {
       this.lastname = response.lastname ?? '';
       this.email = response.email ?? '';
       this.birthDate = response.birthDate ?? '';
-      this.grade = response.grade ?? 0;
+      this.grade = parseFloat(response.grade.toFixed(2)) ?? 0;
       this.ranking = response.ranking ?? 0;
       this.total_num = response.total ?? 0;
       this.current_funding = this.grade > 7 ? 'Tax free' : 'Tax';

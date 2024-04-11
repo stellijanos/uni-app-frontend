@@ -39,7 +39,7 @@
 				<td>{{student.lastname}}</td>
 				<td><a class="link-success" href="mailto:{{student.email}}">{{student.email}}</a></td>
 				<td>{{student.birthDate}}</td>
-				<td>{{student.grade === 0 ? '-' : student.grade }}</td>
+				<td>{{student.grade === 0 ? '-' : formatGrade(student.grade)}}</td>
 				<td><button type="button" class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button></td>
 			</tr>
 		</tbody>
