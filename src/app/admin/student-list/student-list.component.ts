@@ -20,6 +20,9 @@ export class StudentListComponent implements OnInit {
   birthDateAsc : boolean = true;
   gradeAsc : boolean = true;
 
+  isLoaded: boolean = false;
+  no_students_found: boolean = false;
+
   
   constructor(private adminService: AdminService) {}
 
@@ -87,13 +90,18 @@ export class StudentListComponent implements OnInit {
         student.email.toLowerCase().includes(searchTerm) ||
         student.birthDate.toString().includes(searchTerm)
       )
+
+      this.no_students_found = this.filteredStudents.length === 0;
   }
 
   refreshList() {
     this.adminService.getAllStudents().subscribe( response => {
       this.students = response;
       this.filteredStudents = this.students;
+      this.isLoaded = true;
+      
     });
+    
   }
   
 }

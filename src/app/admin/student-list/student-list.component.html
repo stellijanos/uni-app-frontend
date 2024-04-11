@@ -10,10 +10,15 @@
 		</div>
 	</div>
 
-	<div class="container text-center" style="margin:100px 0" *ngIf="filteredStudents.length === 0">
+	<div class="d-flex justify-content-center align-items-center" style="height:500px;" *ngIf="!isLoaded">
+		<div class="spinner-border" role="status" style="margin:100px 0" >
+			<span class="visually-hidden">Loading...</span>
+		</div>
+	</div>
+	
+	<div class="container text-center" style="margin:100px 0" *ngIf="no_students_found">
 		<p style="font-size:50px; line-height:1" class="text-break">No students were found.</p>
 	</div>
-
 
 	<table id="students-table" class="table table-striped border" *ngIf="filteredStudents.length>0">
 		<thead>
