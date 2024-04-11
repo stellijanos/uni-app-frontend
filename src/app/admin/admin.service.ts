@@ -27,5 +27,10 @@ export class AdminService {
   deleteStudent(id: number): Observable<void> {
     return this.http.delete<void>( `${this.apiStudentUrl}/${id}` , this.httpOptions);
   }
+
+  getGradesRate(): Observable<string> {
+    return this.http.get<string>(`${this.apiStudentsUrl}/grades`, this.httpOptions);
+  }
+
 }
 
