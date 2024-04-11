@@ -32,17 +32,6 @@ tr:hover {
     justify-content: space-between;
 }
 
-
-@media screen and (max-width:780px) {
-    #students-table {
-        display:none;
-    }
-    #student-list {
-        display:block;
-    }
-
-}
-
 .btn:active {
     transform:scale(1.05);
 }
@@ -54,4 +43,17 @@ tr:hover {
     justify-content:center;
     gap:1rem;
 }
+
+
+@media screen and (max-width:780px) {
+    #students-table {
+        display:none;
+    }
+    #student-list {
+        display:block;
+    }
+
+}
+
+
 

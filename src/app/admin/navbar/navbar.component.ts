@@ -17,4 +17,7 @@ export class NavbarComponent implements OnInit {
     this.current_url = this.router.url;
   }
 
+
+
+
 }

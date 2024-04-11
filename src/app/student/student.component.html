@@ -71,7 +71,7 @@
         <td scope="row">{{funding}}</td>
         <td scope="row">{{grade}}</td>
         <td scope="row">
-            <p class="alert" [ngClass]="grade >= 5 ? 'alert-success' : 'alert-danger'">{{grade >= 5 ? '(PASSED)' : '(FAILED)'}}</p>
+            <p class="alert" [ngClass]="grade >= 5 ? 'alert-success' : 'alert-danger'">{{grade >= 5 ? 'PASSED' : 'FAILED'}}</p>
         </td>
       </tr>
     </tbody>

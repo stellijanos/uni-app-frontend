@@ -49,6 +49,7 @@ export class RegisterComponent implements OnInit{
           this.errorMessage = register_response.response;
         } else {
           this.successMessage = "User successfully registered!";
+        this.router.navigate(['/login']);
         }
       });
     }

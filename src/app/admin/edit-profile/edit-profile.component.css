@@ -3,3 +3,7 @@
     cursor:pointer;
 }
 
+#show-password:active {
+    transform:scale(1.05);
+}
+

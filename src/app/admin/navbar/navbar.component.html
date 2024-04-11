@@ -14,7 +14,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/admin/students']">Students</a>
+            <a class="nav-link" [routerLink]="['/admin/students']" [ngClass]="current_url === '/admin/students' ? 'active' : '' ">Students</a>
           </li>
         </ul>
       </div>
