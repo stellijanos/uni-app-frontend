@@ -57,7 +57,7 @@
 			<div class="email-birth-date" style="width:300px;">
 				<li><b>Email: </b> <a  class="link-secondary" href="mailto:{{student.email}}">{{student.email}}</a></li>
 				<li><b>Birth date: </b> {{student.birthDate}}</li>
-				<li><b>Grade: </b> {{student.grade}}</li>
+				<li><b>Grade: </b> {{formatGrade(student.grade)}}</li>
 			</div>
 
 			<button type="button" class="btn btn-danger mt-4" (click)="deleteStudent(student.id)">Delete</button>
@@ -66,4 +66,3 @@
   </div>
 
 </div>
-
